@@ -1,4 +1,5 @@
 ﻿namespace Sales;
+
 class Program
 {
     static async Task Main()
@@ -8,6 +9,7 @@ class Program
         var endpointConfiguration = new EndpointConfiguration("Sales");
         endpointConfiguration.UseSerialization<SystemJsonSerializer>();
         var transport = endpointConfiguration.UseTransport<LearningTransport>();
+        var persistence = endpointConfiguration.UsePersistence<LearningPersistence>();
 
         var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
 
